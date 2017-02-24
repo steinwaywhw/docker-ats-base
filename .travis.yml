@@ -1,8 +1,16 @@
-os: 
-  - linux
+os:
+- linux
 sudo: false
 language: c
 services:
-  - docker
+- docker
 env:
-  
+  global:
+  - secure: qozWbNtq50GmT8pUS02sOEG5OD5wM4hQC+Bd8iddBpzLSeuEZ5d/AFgP+uZ+oyn9ODjbBaCBLPRDrc70U0DkIyY/G+OvLgtPpKBTjVmEbjYvvW4YwM4k9Lg5NtWd741E0CcdmfpwZSvd7mmspcVw7l+316pkHpndQtwO5abkJBLZKZFtGv5A9O14Phw1FYoX8Dhd+pcDotngVrMDK4zUOy9KBpvERsgdHrvDtsuph12lTg3m0BQBA5CVIcBSYR2QcVLgwMS5ZGaEPVPHuc7cSWTnlSD9fHRir4rFLPhol0jURYgmSryNaUv3QVI0klCjnVzQrQgKdFfeXzz27YXRjoSz6ACewrigY3j7mpBFI+uQgVzPCbKpM6U3UtQ+SNA6uUZM4J8byrYM0wRVD0o1N2FSyz3FyIxnavM7jBCYbWHW8rIyx20wXfvdVLEYjKhS0X7Pdi3xX5iO8OKA7DQjltkdb51uq/6FTSmRXi9ouvqh+ttW4NxaxQGxLnd4ZOYqDxvcsyL5K3atRC2ra4W68i0Vc8rtq66gVTTdzeN1wihhihdlVfPa6HTaMmQmc1egCUustyQtwfDQ/XISVnCrFID5OUA2ySyq19iu2j6l8ndQiY38/hlqdTtrWHMxQX0sQgvzJkaTJDzuTLBw9QMhn+ALESLvOUdgMFwX+16ez/E=
+  - secure: IWmrZ3UnK3HJQXMIdwZ5tNPukZRIy492yAgt39Op+VK2BbcNw4d8xJxdqVD1KGU8reiMe0PAfpq/qvSkimWWsNoEEYPOyeU71zNvUlmc/vht/N+ejyDuB0YEEtrnsrwB4vJ6yNcX9I//CPMUG0urREzIhhzKxjbJdE6sMMDLPmwozDTnyA7BmdPRgcjAJGaKwYoTU0aytSZOCmuxEfS9oUwIp/DCEdi8qOnJ1ftdevsulqPwXsIm3oUfJp+x3WZ6GtfeA22bAhRnoiPwyi457vq1teFPgUx0ifQW7vmQfvHscAsf2kMk9ztyxJNy1AH28TezruVmGhu/jWfnZe5ma2yLGCaqOqDefALZ0twuhOfkoRf9v4l5wPPYaKCCk+RNKhRSNv/hOtiwNhT0EjapRwC/rBFUe0nMyQxmW7HnDRzfnFkTMhhQBh9XUh6Hj+knF7kxmjxZc+K73+S7HdiWydunF1w/BBy2ARPB40qETgzQ0Fq9GLcQV8m2R0o9FESLjN4WVrnz9xfthypurbuNIaV6GBLxdTuGWsUz7/GIJBN902ZMzPpuCRLhNzm6pTC20yFFhwusJF82Fgxp5fXjTwRZ6Qcgc6DgULR45/3rp5HMo9EfIJTLjT6TaeF27nOgTC/Tp18u+3PiieOddwnqQs0dMBDyhCbEDnvQjjHtISw=
+script:
+  - docker login -u $USER -p $PASS
+  - cd ${TRAVIS_BUILD_DIR}
+  - docker build -f Dockerfile -t steinwaywhw/ats-base ./
+  - docker tag steinwaywhw/ats-base steinwaywhw/ats-base:latest
+  - docker push steinwaywhw/ats-base:latest
