@@ -1,5 +1,6 @@
 
 # install essentials
+apt-get update
 apt-get -qq install -y wget libgmp3-dev libgc-dev make gcc build-essential git \
 				               bash libjson-c-dev pkg-config openjdk-8-jdk unzip zsh
         
